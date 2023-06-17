@@ -10,6 +10,11 @@ module.exports.createContact = async (event, context) => {
   if (!to || !from || !subject || !message) {
     return {
       statusCode: 400,
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Methods': '*',
+        'Access-Control-Allow-Origin': '*',
+      },
       body: JSON.stringify({
         message: 'Missing required fields',
       }),
@@ -35,6 +40,11 @@ module.exports.createContact = async (event, context) => {
     await client.send(command);
     return {
       statusCode: 200,
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Methods': '*',
+        'Access-Control-Allow-Origin': '*',
+      },
       body: JSON.stringify({
         message: 'Email sent successfully',
         success: true,
@@ -44,6 +54,11 @@ module.exports.createContact = async (event, context) => {
     console.error(error);
     return {
       statusCode: 500,
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Methods': '*',
+        'Access-Control-Allow-Origin': '*',
+      },
       body: JSON.stringify(error.message),
     };
   }
