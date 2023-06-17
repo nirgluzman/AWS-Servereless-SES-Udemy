@@ -1,0 +1,12 @@
+@url =  https://k2knnidhaa.execute-api.us-east-1.amazonaws.com/dev
+
+###
+POST {{url}}/contact-us
+Content-Type: application/json
+
+{
+    "from": "nir.gluzman@gmail.com",
+    "to": "gluzman.nir@gmail.com",
+    "subject": "Hello from SES",
+    "message": "bla bla"
+}

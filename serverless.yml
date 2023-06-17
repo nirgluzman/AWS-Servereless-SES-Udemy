@@ -5,7 +5,21 @@ provider:
   name: aws
   profile: serverlessUser
   runtime: nodejs18.x
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - ses:*
+          Resource:
+            - '*'
 
 functions:
-  function1:
-    handler: index.handler
+  create:
+    handler: handler.createContact
+    description: send Email with SES
+    events:
+      - http:
+          path: /contact-us
+          method: post
+          cors: true
