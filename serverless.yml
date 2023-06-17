@@ -1,0 +1,11 @@
+service: aws-ses
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  profile: serverlessUser
+  runtime: nodejs18.x
+
+functions:
+  function1:
+    handler: index.handler
